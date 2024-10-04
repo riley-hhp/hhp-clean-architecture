@@ -31,6 +31,5 @@ public interface LectureRepository {
 
     Long signupForLecture(Long lectureId, Long lectureItemId, Long userId);
 
-    //    TODO) STEP3
-//    void decreaseCapacityByLectureItem(Long lectureItemId);
+    void decreaseCapacityByLectureItem(Long lectureItemId);
 }

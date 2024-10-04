@@ -83,11 +83,10 @@ public class LectureRepositoryImpl implements LectureRepository {
         return lectureSignUpJpaRepository.save(lectureSignUp).getSignupId();
     }
 
-    //    TODO) STEP3
-//    @Override
-//    public void decreaseCapacityByLectureItem(Long lectureItemId) {
-//        LectureItem lectureItem = lectureItemJpaRepository.findLectureItemForSignUp(lectureItemId).orElseThrow(LECTUER_ITEM_EXCEPTION);
-//        lectureItem.decreaseCapacity();
-//        lectureItemJpaRepository.save(lectureItem);
-//    }
+    @Override
+    public void decreaseCapacityByLectureItem(Long lectureItemId) {
+        LectureItem lectureItem = lectureItemJpaRepository.findLectureItemForSignUp(lectureItemId).orElseThrow(LECTUER_ITEM_EXCEPTION);
+        lectureItem.decreaseCapacity();
+        lectureItemJpaRepository.save(lectureItem);
+    }
 }

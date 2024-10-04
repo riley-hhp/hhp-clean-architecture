@@ -105,18 +105,17 @@ class LectureRepositoryTest {
         verify(lectureRepository, times(1)).signupForLecture(lectureId, lectureItemId, userId);
     }
 
-    //    TODO) STEP3
-//    @Test
-//    @DisplayName("강의 항목의 정원을 줄이는 메서드를 테스트")
-//    void decreaseCapacityByLectureItem() {
-//        // Given
-//        Long lectureItemId = 1L;
-//        doNothing().when(lectureRepository).decreaseCapacityByLectureItem(lectureItemId);
-//
-//        // When
-//        lectureRepository.decreaseCapacityByLectureItem(lectureItemId);
-//
-//        // Then
-//        verify(lectureRepository, times(1)).decreaseCapacityByLectureItem(lectureItemId);
-//    }
+    @Test
+    @DisplayName("강의 항목의 정원을 줄이는 메서드를 테스트")
+    void decreaseCapacityByLectureItem() {
+        // Given
+        Long lectureItemId = 1L;
+        doNothing().when(lectureRepository).decreaseCapacityByLectureItem(lectureItemId);
+
+        // When
+        lectureRepository.decreaseCapacityByLectureItem(lectureItemId);
+
+        // Then
+        verify(lectureRepository, times(1)).decreaseCapacityByLectureItem(lectureItemId);
+    }
 }

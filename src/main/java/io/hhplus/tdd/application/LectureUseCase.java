@@ -82,8 +82,7 @@ public class LectureUseCase {
         //신청
         Long singUpId = lectureCommand.signUpForLecture(new LectureSignUp(lectureId, lectureItemId, userId));
         if (singUpId > 0) {
-            //    TODO) STEP3
-//            lectureCommand.decreaseCapacity(lectureItemId); //정원차감
+            lectureCommand.decreaseCapacity(lectureItemId); //정원차감
             return true;
         }
         return false;

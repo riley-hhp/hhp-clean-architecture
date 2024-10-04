@@ -14,7 +14,6 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
-@RequiredArgsConstructor
 public class LectureItem extends BaseTimeEntity {
 
     @Id
@@ -24,19 +23,17 @@ public class LectureItem extends BaseTimeEntity {
     private LocalDateTime lectureDateTime;
     private Integer capacity;
 
-//    TODO) STEP3
-//    public LectureItem() {
-//        this.capacity = 30; // 기본 용량 설정
-//    }
+    public LectureItem() {
+        this.capacity = 30; // 기본 용량 설정
+    }
 
     public LectureItem(Long lectureId, LocalDateTime lectureDateTime) {
         this.lectureId = lectureId;
         this.lectureDateTime = lectureDateTime;
-//        this.capacity = 30;
+        this.capacity = 30;
     }
 
-//    TODO) STEP3
-//    public void decreaseCapacity() {
-//        this.capacity -= 1;
-//    }
+    public void decreaseCapacity() {
+        this.capacity -= 1;
+    }
 }
