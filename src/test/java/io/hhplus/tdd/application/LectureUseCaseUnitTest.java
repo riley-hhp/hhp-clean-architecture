@@ -156,8 +156,7 @@ class LectureUseCaseUnitTest {
         lectureUseCase.signUpForLecture(lectureId, lectureItemId, userId);
 
         // Then
-        //TODO step3
-//        verify(lectureCommand, times(1)).decreaseCapacity(lectureItemId);
+        verify(lectureCommand, times(1)).decreaseCapacity(lectureItemId);
     }
 
     @Test

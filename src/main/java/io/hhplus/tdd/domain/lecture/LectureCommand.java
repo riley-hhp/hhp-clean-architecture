@@ -29,9 +29,8 @@ public class LectureCommand {
         return lectureRepository.signupForLecture(signUp);
     }
 
-    //    TODO) STEP3
-//    public void decreaseCapacity(Long lectureItemId){
-//
-//        lectureRepository.decreaseCapacityByLectureItem(lectureItemId);
-//    }
+    public void decreaseCapacity(Long lectureItemId){
+
+        lectureRepository.decreaseCapacityByLectureItem(lectureItemId);
+    }
 }
