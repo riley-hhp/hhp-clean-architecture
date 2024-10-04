@@ -123,4 +123,27 @@ class LectureUseCaseConcurrencyTest {
         assertEquals(30, successfulUsers.size(), "정원 초과로 인해 성공한 신청자는 30명이어야 합니다.");
     }
 
+    @Test
+    @DisplayName("동일한 사용자로 동일 특강에 여러 번 신청 시 1번만 성공")
+    void testMultipleSignUpSameUser() throws InterruptedException {
+
+        int numberOfAttempts = 5; // 동일 사용자로 신청 시도 횟수
+        long userId = 2L; // 동일 사용자 ID
+        try {
+            // 여러 번 신청
+            for (int i = 0; i < numberOfAttempts; i++) {
+                useCase.signUpForLecture(1L, 1L, userId);
+            }
+        }
+        catch (RuntimeException e) {
+            System.out.println("User " + userId + " failed to sign up: " + e.getMessage());
+            assertEquals(ErrorMessage.ALREADY_SIGNED_LECTURE.getMessage(), e.getMessage());
+        }
+        finally {
+            // 결과 검증: 해당 사용자로 신청 성공한 기록 수 확인
+            long successfulSignUps = lectureSignUpJpaRepository.countByUserId(userId);
+            assertEquals(1, successfulSignUps, "동일 사용자는 1번만 신청 성공해야 합니다.");
+
+        }
+    }
 }

@@ -61,11 +61,14 @@ public class LectureUseCase {
         //사용자 확인
         User user = userQuery.findByUserId(userId);
 
+        //TODO STEP4 동일한 특강 신청하지 못하도록
+        // (커밋이 섞여서 부득이하게 todo로 표기합니다)
         //기수강이력 확인
         LectureSignUp exist = lectureQuery.findLectureSignUpByUserIdAndLectureItemId(userId, lectureItemId);
         if ( exist != null ) {
             throw new RuntimeException(ErrorMessage.ALREADY_SIGNED_LECTURE.getMessage());
         }
+        //STEP4 동일한 특강 신청하지 못하도록
 
         //강좌 아이템 정보 확인( 날짜, 정원 )
         LectureItem lectureItem = lectureCommand.findLectureItemForSignUp(lectureItemId);
